@@ -1,0 +1,17 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "all",
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "cSpell.ignoreWords": [
+        "Laravel"
+    ],
+    "cSpell.userWords": [
+        "hoge",
+    ],
+    "cSpell.ignorePaths": [
+        ".vscode",
+        "*.yml"
+    ],
+    "rest-client.decodeEscapedUnicodeCharacters": true
+}
