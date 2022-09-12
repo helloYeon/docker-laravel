@@ -53,6 +53,10 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->singleton('Common', function () {
+    return new App\Libraries\UtilCommon;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::pattern('apiVersion1', 'v1');
+
+Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => '{apiVersion1}'], function () {
+    Route::get('/sample', 'SampleController@get');
+});

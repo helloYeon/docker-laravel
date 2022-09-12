@@ -1,0 +1,13 @@
+# サンプルAPI
+
+@baseUrl = http://localhost:3000/
+
+###
+# sample api
+GET {{baseUrl}}api/v1/sample HTTP/1.1
+X-PID: eacf0ab2-25fc-4703-9ca2-7766b7cc2bcb
+Content-Type: application/json
+
+{
+    "userId": "1"
+}
