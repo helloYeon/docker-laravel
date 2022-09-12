@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PHP7 Docker for XDebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9026,
+            "pathMappings": {
+                "/usr/share/nginx/html": "${workspaceRoot}/src"
+            }
+        }
+    ]
+}
