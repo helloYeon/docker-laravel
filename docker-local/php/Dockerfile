@@ -6,7 +6,7 @@ RUN yum -y update
 
 RUN yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
-ENV PHP_VERSION="82"
+ENV PHP_VERSION="81"
 
 RUN yum -y install --enablerepo=remi,remi-php${PHP_VERSION} \
 php \
