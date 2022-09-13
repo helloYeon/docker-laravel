@@ -7,7 +7,7 @@ use App\Libraries\UtilCommon;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 
-abstract class APIController extends Controller
+abstract class ApiController extends Controller
 {
     /**
      * constant
