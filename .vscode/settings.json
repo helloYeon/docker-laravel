@@ -6,7 +6,8 @@
 
     // cspell
     "cSpell.ignoreWords": [
-        "Laravel"
+        "Laravel",
+        "stderr"
     ],
     "cSpell.userWords": [
         "hoge",

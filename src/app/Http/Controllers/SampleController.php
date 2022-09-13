@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SampleController extends APIController
+class SampleController extends ApiController
 {
     public function __construct()
     {
@@ -21,12 +21,18 @@ class SampleController extends APIController
     {
 
         // log
-        log_info(sprintf(config('message.I0002'), 'sample api'), []);
+        log_info(
+            sprintf(config('message.I0002'), 'sample api'),
+            []
+        );
 
         // validation check
-        $this->validator($request, [
-            'userId'  => 'required',
-        ]);
+        $this->validator(
+            $request,
+            [
+                'userId'  => 'required',
+            ]
+        );
 
         // get user info
         $userId = request()->input('userId');

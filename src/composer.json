@@ -28,7 +28,9 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "helper/logHelper.php"
+            "helper/logHelper.php",
+            "Logging/CustomizeFormatter.php",
+            "Logging/CustomizeJsonFormatter.php"
         ]
     },
     "autoload-dev": {
