@@ -1,0 +1,32 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "all",
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+
+    // cspell
+    "cSpell.ignoreWords": [
+        "Laravel",
+        "stderr"
+    ],
+    "cSpell.userWords": [
+        "hoge",
+    ],
+    "cSpell.ignorePaths": [
+        ".vscode",
+        "*.yml"
+    ],
+    // http client
+    "rest-client.decodeEscapedUnicodeCharacters": true,
+
+    // phpcs
+    "phpcs.enable": true,
+    "phpcs.standard": "./src/phpcs_ruleset.xml",
+    "phpcs.executablePath": "./src/vendor/bin/phpcs",
+
+    // phpcbf
+    "phpcbf.enable": true,
+    "phpcbf.standard": "./src/phpcs_ruleset.xml",
+    "phpcbf.executablePath": "./src/vendor/bin/phpcbf",
+    "phpcbf.onsave":true,
+}

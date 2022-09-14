@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: ${COMPOSE_PROJECT_NAME}-nginx
+    build:
+      context: ./docker-local/nginx/
+    ports:
+      - "80:80"
+      - "3000:80"
+      - "443:443"
+    volumes:
+      - ./src/:/usr/share/nginx/html
+      - ./docker-local/nginx/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker-local/nginx/certs:/etc/ssl/certs
+    depends_on:
+      - php
+    networks:
+      - common
+
+  php:
+    container_name: ${COMPOSE_PROJECT_NAME}-php
+    build:
+      context: ./docker-local/php/
+    privileged: true
+    environment:
+      APP_ENV: local
+      DB_HOST: ${COMPOSE_PROJECT_NAME}-mysql
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: 3306
+    volumes:
+      - ./src/:/usr/share/nginx/html
+      - ./docker-local/php/config/php.ini:/etc/php.ini
+      - ./docker-local/php/config/php-fpm.conf:/etc/php-fpm.conf
+      - ./docker-local/php/config/www.conf:/etc/php-fpm.d/www.conf
+    networks:
+      - common
+  mysql:
+    container_name: ${COMPOSE_PROJECT_NAME}-mysql
+    platform: linux/x86_64
+    build:
+      context: ./docker-local/mysql/
+    hostname: localhost
+    environment:
+      HOSTNAME: localhost
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      TZ: Asia/Tokyo
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - ./docker-local/mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
+      - ./docker-local/mysql/config/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - ./docker-local/mysql/initdb.d/init_data220102.sql:/docker-entrypoint-initdb.d/init_data220102.sql
+      - dbdata-storage:/var/lib/mysql
+    networks:
+      - common
+volumes:
+  dbdata-storage:
+    driver: local
+
+networks:
+  common:
+    driver: bridge
+
